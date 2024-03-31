@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quantity Increment Decrement </title>
+
+  <style>
+    body {
+      background-color: #f2f2f2
+    }
+
+    .cake-img {
+      height: 180px;
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+    }
+
+    .product-card {
+
+      width: 250px;
+      border-radius: 20px;
+      background-color: #f5e3ab;
+      box-shadow: 0 0 10px  rgba(0, 0, 0, 0.2);
+      display: block;
+      margin: 30px auto;
+      padding: 3px;
+
+    }
+
+    .product-title {
+      font-size: 16px;
+    }
+
+    .card-body {
+      margin: 10px;
+    }
+
+    .product-description {
+      font-size: 14px;
+    }
+
+    .product-price {
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .btn-buy-now {
+      border: none;
+      color: #ffff;
+      border-radius: 20px;
+      border: none;
+      padding: 5px 20px;
+      display: block;
+      margin: 10px auto;
+      cursor: pointer;
+      background-image: linear-gradient(135deg, #f18f0e 10%, #ff6738 100%);
+    }
+
+    .btn-quantity {
+      height: 25px;
+    }
+
+    .quantity-btn-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .quantity-text {
+      font-size: 25px;
+      margin: auto 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="product-card">
+    <img src="image.png" class="cake-img">
+    <div class="card-body">
+      <h2 class="product-title"> Carrot cake</h2>
+      <p class="product-description">Soft, fluffy and flavourful Carrot cake
+        with orange infused cheese cream and coated with cinemon sugar.
+      </p>
+      <p class="product-price">₹ 499/-</p>
+      <p id="show-quantity">1 x 499/-</p>
+      <p id="show-total">Total 499</p>
+      <div class="quantity-btn-container">
+        <img src="minus.png" class="btn-quantity" onclick="dec()">
+        <span class="quantity-text" id="quantity-text">1 </span>
+
+        <img src="plus.png" class="btn-quantity" onclick="inc()">
+      </div>
+      <button type="button" class="btn-buy-now">Buy Now</button>
+    </div>
+  </div>
+  <script>
+    function inc() {
+      const quantityText = document.getElementById("quantity-text");
+      const showQuantity = document.getElementById("show-quantity");
+      const showTotal = document.getElementById("show-total");
+      let quantity = parseInt(quantityText.innerText);
+      if (quantity < 20) {
+        quantityText.innerText = ++quantity;
+      }
+      else {
+        alert("You can't add more than 20 items");
+      }
+      showQuantity.innerText = `${quantity} x 499`;
+      showTotal.innerText = `Total :${quantity * 499} `;
+    }
+    function dec() {
+      const quantityText = document.getElementById("quantity-text");
+      const showQuantity = document.getElementById("show-quantity");
+      const showTotal = document.getElementById("show-total");
+      let quantity = parseInt(quantityText.innerText);
+      if (quantity > 1) {
+        quantityText.innerText = --quantity;
+      }
+      else {
+        alert("You can't add less than 1 items");
+      }
+      showQuantity.innerText = `${quantity} x 499`;
+      showTotal.innerText = `Total :${quantity * 499} `;
+    }
+  </script>
+</body>
+
+</html>
